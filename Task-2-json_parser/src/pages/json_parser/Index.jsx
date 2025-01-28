@@ -135,12 +135,9 @@ const Index = () => {
                     <h3 className={styles.resultHeader}>Parsed JSON</h3>
 
                     <div className={styles.resultContainer}>
-                        {/* <div className={styles.result}> */}
-                        {/* {error && <div className={styles.error}>{error}</div>} */}
-                        {/* {error && toast.error(error)} */}
-                        {/* <pre className={styles.resultJson}>{parsedJson ? JSON.stringify(parsedJson, null, 2) : ""}</pre> */}
+                      
                         {!error && parsedJson && renderParsedJson(parsedJson)}
-                        {/* </div> */}
+
                     </div>
                 </>
             )}
