@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="../css/question.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+      <div class="milestones">
+        <div id="current-progress-pointer" class="pointer">🎯</div>
+        <span class="milestone">1</span>
+        <span class="milestone">2</span>
+        <span class="milestone">3</span>
+        <span class="milestone">4</span>
+        <span class="milestone">5</span>
+        <span class="milestone">6</span>
+        <span class="milestone">7</span>
+        <span class="milestone">8</span>
+        <span class="milestone">9</span>
+        <span class="milestone">10</span>
+        <span class="milestone">🤩</span>
+      </div>
+    </div>
+
+
+    <div class="wrapper">
+
+
+      <div class="clock">
+        <div class="time" id="time">30s</div>
+      </div>
+
+
+
+      <div id="question-container">
+        <h2 id="question">Question</h2>
+        <div id="options-container"></div>
+      </div>
+
+      <button id="next-button" disabled >Next</button>
+      <button id="submit-button" class="hidden" disabled>Submit</button>
+
+      <div id="popup" style="display: none;">
+        <p>Time's Up!</p>
+        <button id="popup-next-button">Next Question</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/question.js"></script>
+</body>
+
+</html>

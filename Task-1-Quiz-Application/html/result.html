@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <link rel="stylesheet" href="../css/result.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Quiz Results</h1>
+    <p id="score"></p>
+    <div class="result-button-container">
+
+      <button id="view-answers-button">View All Questions</button>
+      <button onclick="restart()">Restart Quiz</button>
+    </div>
+
+    <div id="answers-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Review Your Answers</h2>
+
+        <div id="result-list">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+
+    document.getElementById("score").textContent =
+      `Your Score: ${localStorage.getItem("quizScore") || 0}/10`;
+
+    
+    function restart() {
+      window.location.href = "home.html";
+      localStorage.removeItem('quizScore');
+      localStorage.removeItem('userAnswers'); 
+      localStorage.removeItem('questions'); 
+    }
+
+    
+    document.getElementById("view-answers-button").addEventListener("click", () => {
+      displayAnswers();
+      document.getElementById("answers-modal").classList.remove("hidden");
+    });
+
+    
+    document.querySelector(".close-button").addEventListener("click", () => {
+      document.getElementById("answers-modal").classList.add("hidden");
+    });
+
+    
+    function displayAnswers() {
+      const resultList = document.getElementById("result-list");
+      resultList.innerHTML = ""; 
+
+      
+      const questions = JSON.parse(localStorage.getItem("questions")) || []; 
+      const userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || [];
+
+      
+      if (questions.length === 0) {
+        resultList.innerHTML = "<p>No questions available.</p>";
+        return;
+      }
+
+      
+      questions.forEach((question, index) => {
+        const userAnswer = userAnswers[index] || "Not answered"; 
+        const correctAnswer = question.answer;
+
+        const resultItem = document.createElement("div");
+        resultItem.classList.add("result-item");
+        resultItem.innerHTML = `
+          <p><strong>Q${index + 1}: ${question.question}</strong></p>
+          <p>Your Answer: <span class="${userAnswer === correctAnswer ? 'correct-answer' : 'wrong-answer'}">${userAnswer}</span></p>
+          <p>Correct Answer: <span class="correct-answer">${correctAnswer}</span></p>
+        `;
+
+        resultList.appendChild(resultItem);
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+
+:root {
+  --primary-color: rgb(210, 55, 55);
+  --secondary-color: #43c1c5;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f9;
+  background-image: url("../images/question.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  /* position: relative; */
+  height: 90vh;
+}
+
+#progress-bar-container {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+  background-color: transparent;
+  border-radius: 15px;
+  padding: 20px 0px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#progress-bar {
+  background-color: var(--secondary-color);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 10px;
+  width: 0%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+#current-progress-pointer {
+  position: absolute;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  padding: 0px;
+  border-radius: 50%;
+
+  transform: translate(-7%, -5%);
+  left: 30%;
+  top: -20%;
+  z-index: 1000;
+ 
+  font-size: 24px;
+  /* left: 30%; */
+  transition: left 0.3s ease;
+}
+
+.milestones {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+}
+
+.milestone {
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid white;
+  transition: 0.4s ease;
+}
+
+.milestone.correct {
+  background-color: #4caf50;
+}
+
+.milestone.wrong {
+  background-color: #f44336;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  width: 100%;
+  max-width: 800px; 
+  padding: 20px;
+  background: #ffffff; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.clock {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 10px solid #3498db;
+  background: conic-gradient(#3498db 0%, #ddd 0%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px 0; 
+  overflow: hidden;
+
+}
+
+.time {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#question-container {
+  background-color: #fff;
+  margin-top: 10px;
+  width: 100%; 
+}
+#question {
+  font-size: 35px;
+  margin: 20px 0;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#options-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 15px;
+}
+
+.option {
+  background: #e3e3e3;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 49%;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.option:hover {
+  background: #d1d1d1;
+}
+
+.option.selected {
+  background: #4caf50; 
+  color: white;
+}
+
+#next-button {
+  background: #4caf50; 
+
+  color: white;
+  padding: 10px 40px;
+  font-size: 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  /* background-color: black; */
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+
+
+#submit-button {
+  background: #4caf50;
+  color: white;
+  padding: 10px 40px;
+  font-size: 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  /* background-color: black; */
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#next-button:hover ,
+#submit-button:hover {
+  background: #2a702d; 
+}
+
+.hidden {
+  display: none;
+}
+
+#popup {
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  border: 2px solid #3498db;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 99;
+}
+
+#popup p {
+  font-size: 20px;
+}
+
+#popup-next-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

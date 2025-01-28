@@ -1,0 +1,86 @@
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        font-size: 30px;
+        color: black;
+        margin: 10px 0;
+        text-align: left;
+    }
+
+    .input {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        height: 250px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .parseButton {
+        width: 30%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px 20px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        justify-content: left;
+        margin-bottom: 10px;
+
+        &:hover {
+            background-color: #418e47;
+        }
+    }
+
+    .resultHeader {
+
+        font-size: 20px;
+        font-weight: 500;
+        text-align: left;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
+    .resultContainer {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 250px;
+        overflow-y: auto;
+        overflow-x: auto;
+
+    }
+
+    .jsonOutput {
+        margin-left: 0;
+        text-align: left;
+        padding: 10px;
+        white-space: pre-wrap;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1rem;
+        line-height: 1.5;
+
+
+        .innerDiv {
+            margin-left: 20px;
+        }
+    }
+
+    .span {
+        margin-left: 0px;
+
+    }
+}
