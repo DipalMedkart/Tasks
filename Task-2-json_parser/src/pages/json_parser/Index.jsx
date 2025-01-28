@@ -58,16 +58,15 @@ const Index = () => {
                 inputToParse = jsonInput.slice(1, -1);
             }
             
-            console.log(inputToParse);
+            // console.log(inputToParse);
             const parsed = JSON.parse(inputToParse);
-            console.log(parsed);
+            // console.log(parsed);
             dispatch({ type: 'PARSE_JSON', payload: parsed })
         } catch (err) {
             dispatch({ type: 'ERROR', payload: err.message })
         }
     }
 
-      
 
     const renderParsedJson = (data) => {
         if (typeof data === 'object' && data !== null) {

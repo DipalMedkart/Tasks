@@ -40,3 +40,7 @@ a {
     color-scheme: dark;
   }
 } */
+body {
+  background: linear-gradient(to bottom, #4970ab, #a0bce6);
+  height: 100vh;
+}
