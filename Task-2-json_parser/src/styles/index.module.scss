@@ -1,9 +1,6 @@
-
-
-
 .container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     border: 2px solid black;
     border-radius: 8px;
@@ -81,6 +78,34 @@
 
         .innerDiv {
             margin-left: 20px;
+
+            .toggleButton {
+                background-color: gray;
+                color: black;
+                border: none;
+                // padding: 8px 12px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 10px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .toggleButton:hover {
+                background-color: black;
+                color: white;
+                transform: scale(1.05);
+            }
+
+
+
+            .toggleButton:active {
+                transform: scale(0.95);
+            }
+
         }
     }
 
