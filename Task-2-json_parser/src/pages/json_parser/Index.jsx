@@ -20,6 +20,7 @@ const Index = () => {
 
     const handleToggle = (key) => {
         setToggle((prev) => ({ ...prev, [key]: !prev[key] }));
+        console.log(toggle);
     }
 
     const handleInputChange = (e) => {
@@ -29,7 +30,7 @@ const Index = () => {
     const multipleValue = (value) => {
         const isArray = Array.isArray(value);
         const isObject = typeof value === 'object' && value !== null;
-        return (isArray && value.length > 1) || (isObject && Object.keys(value).length > 1);
+        return (isArray) || (isObject);
     }
 
 
@@ -96,79 +97,36 @@ const Index = () => {
         }
     }
 
-    const renderParsedJson = (data, parentKey = '') => {
+
+
+
+    const renderParsedJson3 = (data, parentKey = '') => {
 
         if (typeof data === "object" && data !== null) {
             return (
                 <div className={styles.jsonOutput}>
                     <span className={styles.span}>{"{"}</span>
                     {Object.entries(data).map(([key, value], index) => {
-                        const fullKey = `${parentKey}.${key}`;
-
+                        const fullKey = parentKey ? `${parentKey}.${key}` : key;
+                        console.log(fullKey);
                         return (
-                            <div key={index} className={styles.innerDiv}>
-                                {multipleValue(value) && (
-                                    <button
-                                        className={styles.toggleButton}
-                                        onClick={() => handleToggle(fullKey)}
-                                    >
-                                        {toggle[fullKey] ? "v" : ">"}
-                                    </button>
-                                )}
-                                <strong>{key}</strong>:{" "}
-                                {Array.isArray(value) ? (
-                                    <>
-                                        <span>[{value.length}]</span>
-                                        {toggle[fullKey] && (
-                                            <div className={styles.innerDiv}>
-                                                <span className={styles.span}>{"["}</span>
-                                                {value.map((item, idx) => (
-                                                    <div key={idx} className={styles.innerDiv}>
-                                                        {typeof item === "object" ? (
-                                                            renderParsedJson(item, `${fullKey}.${idx}`)
-                                                        ) : (
-                                                            <span>{idx}: {item}</span>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                                <span className={styles.span}>{"]"}</span>
-                                            </div>
-                                        )}
-                                    </>
-                                ) : typeof value === "object" ? (
-                                    <>
-                                        {toggle[fullKey] && (
-                                            <div className={styles.innerDiv} >
-
-                                                <span className={styles.span}>{"{"}</span>
-                                                {Object.entries(value).map(([nestedKey, nestedValue], nestedIndex) => (
-
-                                                    <div key={`${fullKey}.${nestedKey}`} className={styles.innerDiv}>
-                                                        {/* {multipleValue(nestedValue) && (
-                                                            <button
-                                                                className={styles.toggleButton}
-                                                                onClick={() => handleToggle(fullKey)}
-                                                            >
-                                                                {toggle[fullKey] ? "v" : ">"}
-                                                            </button>
-                                                        )} */}
-                                                        <strong>{nestedKey}</strong>:{" "}
-                                                        {typeof nestedValue === "object" ? (
-                                                            renderParsedJson(nestedValue, `${fullKey}`)
-                                                        ) : (
-                                                            <span>{nestedValue}</span>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                                <span className={styles.span}>{"}"}</span>
-                                            </div>
-                                        )}
-                                    </>
-                                ) : (
-                                    <span>{value}</span>
-                                )}
-                            </div>
-                        );
+                             (
+                                <div key={fullKey} className={styles.innerDiv}>
+                                    {multipleValue(value) && (
+                                        <button
+                                            className={styles.toggleButton}
+                                            onClick={() => handleToggle(fullKey)}
+                                        >
+                                            {toggle[fullKey] ? "v" : ">"}
+                                        </button>
+                                    )}
+                                    <strong>{key}</strong>:{" "}
+                                    {!multipleValue(value) && (
+                                        <span>{value}</span>
+                                    )}
+                                    {toggle[fullKey] && renderParsedJson3(value, `${fullKey}.${index}`)}
+                                </div>)
+                        )
                     })}
                     <span className={styles.span}>{"}"}</span>
                 </div>
@@ -247,7 +205,7 @@ const Index = () => {
 
                     <div className={styles.resultContainer}>
 
-                        {!error && parsedJson && renderParsedJson(parsedJson)}
+                        {!error && parsedJson && renderParsedJson3(parsedJson)}
 
                     </div>
                 </>
