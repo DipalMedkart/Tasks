@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const Index = () => {
+const Json_Parser = () => {
 
     const dispatch = useDispatch()
     const jsonInput = useSelector((state) => state.json)
@@ -24,6 +24,7 @@ const Index = () => {
     }
 
     const handleInputChange = (e) => {
+        // dispatch({ type: 'ERROR', payload: null });
         dispatch({ type: 'JSON', payload: e.target.value })
     }
 
@@ -31,6 +32,11 @@ const Index = () => {
         const isArray = Array.isArray(value);
         const isObject = typeof value === 'object' && value !== null;
         return (isArray) || (isObject);
+    }
+
+    const handleClear = () => {
+        dispatch({ type: "CLEAR_INPUT" });
+
     }
 
 
@@ -44,8 +50,6 @@ const Index = () => {
         if (typeof input === 'string' && input.startsWith("'") && input.endsWith("'")) {
             input = input.slice(1, -1);
         }
-
-      
 
         try {
 
@@ -64,6 +68,7 @@ const Index = () => {
 
     const handleParseJson = () => {
 
+        dispatch({ type: 'ERROR', payload: null });
         let inputToParse;
 
         const isError = validate(jsonInput);
@@ -75,8 +80,6 @@ const Index = () => {
 
         try {
 
-
-          
 
             inputToParse = jsonInput;
 
@@ -106,7 +109,7 @@ const Index = () => {
                         const fullKey = parentKey ? `${parentKey}.${key}` : key;
                         console.log(fullKey);
                         return (
-                             (
+                            (
                                 <div key={fullKey} className={styles.innerDiv}>
                                     {multipleValue(value) && (
                                         <button
@@ -178,7 +181,7 @@ const Index = () => {
     useEffect(() => {
         if (error) {
             toast.error(error);
-            dispatch({ type: 'ERROR', payload: null });
+            // dispatch({ type: 'ERROR', payload: null });
         }
     }, [error]);
 
@@ -186,14 +189,23 @@ const Index = () => {
 
         <div className={styles.container}>
             <ToastContainer />
-            <h1 className={styles.header}>JSON PARSER</h1>
+            <h1 className={styles.header}>JSON Parser</h1>
+            <label htmlFor="" className={styles.label}>Input JSON</label>
             <textarea
+                id='input'
                 className={styles.input}
                 value={jsonInput}
                 onChange={handleInputChange}
                 placeholder='Enter JSON here...'
             />
-            <button onClick={handleParseJson} className={styles.parseButton}>Parse JSON</button>
+            {error && <div className={styles.errorDiv}>
+                <h3 className={styles.errorH3}>{error}</h3>
+            </div>}
+            <div className={styles.buttons}>
+
+                <button onClick={handleParseJson} className={styles.parseButton}>Parse JSON</button>
+                <button onClick={handleClear} className={styles.parseButton}>Clear</button>
+            </div>
 
             {parsedJson && (
                 <>
@@ -213,4 +225,4 @@ const Index = () => {
 
 }
 
-export default Index;  
+export default Json_Parser;  

@@ -14,6 +14,8 @@ const reducer = (state = intialState, action) => {
             return {...state, parsedJson : action.payload}
         case 'ERROR':
             return {...state, error : action.payload}
+        case 'CLEAR_INPUT':
+            return {...state, json : '', parsedJson : null, error : null}
         default : 
             return state;
     }

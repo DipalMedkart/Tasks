@@ -1,5 +1,5 @@
 .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     border: 2px solid black;
@@ -15,7 +15,19 @@
         font-size: 30px;
         color: black;
         margin: 10px 0;
+        text-align: center;
+    }
+
+    .label {
+        color: black;
         text-align: left;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+    }
+
+    .label:hover {
+        color: rgb(104, 91, 91);
     }
 
     .input {
@@ -24,27 +36,47 @@
         border: 1px solid #ddd;
         border-radius: 4px;
         margin-bottom: 10px;
+        overflow-x: hidden;
         height: 250px;
-        overflow-x: auto;
-        white-space: nowrap;
+        white-space: pre-wrap;
     }
 
-    .parseButton {
-        width: 30%;
-        background-color: rgb(44, 42, 42);
-        color: white;
-        padding: 5px 20px;
-        cursor: pointer;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        justify-content: left;
-        margin-bottom: 10px;
+    .errorDiv {
+        height: auto;
+        width: 100%;
 
-        &:hover {
-            background-color: black;
+        .errorH3 {
+            color: red;
         }
     }
+
+        .buttons{
+            
+            display: flex;
+            flex-direction: column;
+            
+            
+        }
+
+
+        .parseButton {
+            width: 20%;
+            background-color: rgb(44, 44, 44);
+            color: white;
+            padding: 5px 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin: auto;
+            margin-bottom: 10px;
+
+            &:hover {
+                background-color: black;
+            }   
+        }
+    
 
     .resultHeader {
 
