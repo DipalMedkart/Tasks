@@ -45,8 +45,7 @@ const Index = () => {
             input = input.slice(1, -1);
         }
 
-        // input = input.replace(/\\n/g, '\n');
-        // input = input.replace(/\\t/g, '\t');
+      
 
         try {
 
@@ -77,10 +76,7 @@ const Index = () => {
         try {
 
 
-            // inputToParse = jsonInput
-            //     .replace(/\\n/g, '\n')
-            //     .replace(/\\t/g, '\t')
-            //     .replace(/\\/g, '\\\\');
+          
 
             inputToParse = jsonInput;
 
